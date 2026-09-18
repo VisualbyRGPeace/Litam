@@ -1,188 +1,602 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#0b0f14"
+  >
+
   <title>Lì Tám — Tiến Lên</title>
-  <link rel="stylesheet" href="./style.css" />
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="./style.css"
+  >
 </head>
 
 <body>
-  <div id="app">
 
-    <!-- LOGIN -->
-    <section id="loginScreen" class="screen active">
-      <div class="login-card">
-        <div class="logo">LÌ TÁM</div>
-        <p class="subtitle">Tiến Lên Online</p>
+<div id="app">
 
-        <input id="playerName" type="text" placeholder="Tên người chơi" maxlength="16" />
+  <!-- =========================
+       LOGIN
+  ========================== -->
 
-        <button id="loginBtn" class="primary-btn">
-          VÀO GAME
-        </button>
+  <section
+    id="loginScreen"
+    class="screen login-screen active"
+  >
+
+    <div class="login-card">
+
+      <div class="brand-large">
+        LÌ TÁM
       </div>
-    </section>
 
-    <!-- HOME -->
-    <section id="homeScreen" class="screen">
-      <header class="topbar">
-        <div class="brand">LÌ TÁM</div>
+      <div class="login-subtitle">
+        Tiến Lên Online
+      </div>
 
-        <div class="profile">
-          <span id="homePlayerName">Player</span>
-          <button id="logoutBtn">Đăng xuất</button>
+      <div class="input-group">
+
+        <label>
+          Tên người chơi
+        </label>
+
+        <input
+          id="playerName"
+          type="text"
+          maxlength="16"
+          autocomplete="off"
+          placeholder="Nhập tên của bạn"
+        >
+
+      </div>
+
+      <button
+        id="loginBtn"
+        class="btn btn-primary btn-large"
+      >
+        VÀO GAME
+      </button>
+
+      <div class="login-note">
+        Phiên bản thử nghiệm
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       HOME
+  ========================== -->
+
+  <section
+    id="homeScreen"
+    class="screen"
+  >
+
+    <header class="topbar">
+
+      <div class="brand">
+        LÌ TÁM
+      </div>
+
+      <div class="profile">
+
+        <div class="profile-avatar">
+          <span id="profileInitial">
+            P
+          </span>
         </div>
-      </header>
 
-      <main class="home-content">
-        <p class="eyebrow">GAME</p>
-        <h1>Chọn trò chơi</h1>
-
-        <div class="game-grid">
-
-          <button id="tienLenBtn" class="game-card">
-            <div class="game-icon">🃏</div>
-            <h2>Tiến Lên</h2>
-            <p>Tiến Lên miền Nam</p>
-            <span>4 người chơi</span>
-          </button>
-
-          <div class="game-card disabled">
-            <div class="game-icon">♠</div>
-            <h2>Xì Dách</h2>
-            <p>Đang phát triển</p>
-            <span>Coming soon</span>
-          </div>
-
-          <div class="game-card disabled">
-            <div class="game-icon">♟</div>
-            <h2>Cờ Vua</h2>
-            <p>Đang phát triển</p>
-            <span>Coming soon</span>
-          </div>
-
+        <div class="profile-name">
+          <span id="homePlayerName">
+            Player
+          </span>
         </div>
-      </main>
-    </section>
 
-    <!-- LOBBY -->
-    <section id="lobbyScreen" class="screen">
-      <header class="topbar">
-        <div class="brand">LÌ TÁM</div>
-
-        <button id="backHomeBtn">
-          ← Trang chủ
+        <button
+          id="logoutBtn"
+          class="text-btn"
+        >
+          Đăng xuất
         </button>
-      </header>
 
-      <main class="lobby">
-        <div class="lobby-header">
-          <div>
-            <p class="eyebrow">TIẾN LÊN</p>
-            <h1>Phòng chơi</h1>
+      </div>
+
+    </header>
+
+
+    <main class="home-container">
+
+      <div class="section-label">
+        LÌ TÁM GAME
+      </div>
+
+      <h1>
+        Chọn trò chơi
+      </h1>
+
+      <p class="home-description">
+        Chọn một trò chơi để bắt đầu.
+      </p>
+
+
+      <div class="game-grid">
+
+        <!-- TIẾN LÊN -->
+
+        <button
+          id="tienLenBtn"
+          class="game-card"
+        >
+
+          <div class="game-card-top">
+
+            <div class="game-icon">
+              ♠
+            </div>
+
+            <span class="game-status">
+              PLAY
+            </span>
+
           </div>
 
-          <button id="createRoomBtn" class="primary-btn">
-            + TẠO PHÒNG
-          </button>
-        </div>
+          <h2>
+            Tiến Lên
+          </h2>
 
-        <div id="roomList" class="room-list"></div>
-      </main>
-    </section>
+          <p>
+            Tiến Lên miền Nam
+          </p>
 
-    <!-- GAME -->
-    <section id="gameScreen" class="screen game-screen">
+          <div class="game-card-footer">
+            4 người chơi
+          </div>
 
-      <header class="game-topbar">
-        <div class="brand">LÌ TÁM</div>
-
-        <div class="room-info">
-          PHÒNG <strong id="roomIdText">----</strong>
-        </div>
-
-        <button id="leaveGameBtn">
-          Rời phòng
         </button>
-      </header>
 
-      <main class="table">
 
-        <!-- PLAYER 2 -->
-        <div class="opponent opponent-top">
-          <div class="avatar">P2</div>
+        <!-- XÌ DÁCH -->
 
-          <div>
-            <strong>Player 2</strong>
-            <small id="p2Count">13 lá</small>
-          </div>
-        </div>
+        <div class="game-card disabled">
 
-        <!-- PLAYER 3 -->
-        <div class="opponent opponent-left">
-          <div class="avatar">P3</div>
+          <div class="game-card-top">
 
-          <div>
-            <strong>Player 3</strong>
-            <small id="p3Count">13 lá</small>
-          </div>
-        </div>
+            <div class="game-icon">
+              ♦
+            </div>
 
-        <!-- PLAYER 4 -->
-        <div class="opponent opponent-right">
-          <div class="avatar">P4</div>
+            <span class="game-status">
+              SOON
+            </span>
 
-          <div>
-            <strong>Player 4</strong>
-            <small id="p4Count">13 lá</small>
-          </div>
-        </div>
-
-        <!-- CENTER -->
-        <div class="center-table">
-
-          <div id="turnText" class="turn-text">
-            Đang chia bài...
           </div>
 
-          <div id="playedCards" class="played-cards"></div>
+          <h2>
+            Xì Dách
+          </h2>
 
-          <div id="message" class="game-message"></div>
+          <p>
+            Game bài Xì Dách
+          </p>
+
+          <div class="game-card-footer">
+            Đang phát triển
+          </div>
 
         </div>
 
-        <!-- CURRENT PLAYER -->
-        <div class="my-player">
 
-          <div class="my-info">
-            <div class="avatar large">ME</div>
+        <!-- CỜ VUA -->
+
+        <div class="game-card disabled">
+
+          <div class="game-card-top">
+
+            <div class="game-icon">
+              ♟
+            </div>
+
+            <span class="game-status">
+              SOON
+            </span>
+
+          </div>
+
+          <h2>
+            Cờ Vua
+          </h2>
+
+          <p>
+            Chess Online
+          </p>
+
+          <div class="game-card-footer">
+            Đang phát triển
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </section>
+
+
+  <!-- =========================
+       LOBBY
+  ========================== -->
+
+  <section
+    id="lobbyScreen"
+    class="screen"
+  >
+
+    <header class="topbar">
+
+      <div class="brand">
+        LÌ TÁM
+      </div>
+
+      <button
+        id="backHomeBtn"
+        class="text-btn"
+      >
+        ← Trang chủ
+      </button>
+
+    </header>
+
+
+    <main class="lobby-container">
+
+      <div class="lobby-heading">
+
+        <div>
+
+          <div class="section-label">
+            TIẾN LÊN
+          </div>
+
+          <h1>
+            Phòng chơi
+          </h1>
+
+          <p>
+            Tạo phòng hoặc tham gia một bàn đang chờ.
+          </p>
+
+        </div>
+
+        <button
+          id="createRoomBtn"
+          class="btn btn-primary"
+        >
+          + TẠO PHÒNG
+        </button>
+
+      </div>
+
+
+      <div
+        id="roomList"
+        class="room-list"
+      ></div>
+
+    </main>
+
+  </section>
+
+
+  <!-- =========================
+       GAME
+  ========================== -->
+
+  <section
+    id="gameScreen"
+    class="screen game-screen"
+  >
+
+    <header class="game-topbar">
+
+      <div class="brand">
+        LÌ TÁM
+      </div>
+
+      <div class="game-room">
+        PHÒNG
+        <strong id="roomIdText">
+          LT-000
+        </strong>
+      </div>
+
+      <button
+        id="leaveGameBtn"
+        class="text-btn"
+      >
+        Rời phòng
+      </button>
+
+    </header>
+
+
+    <main class="table">
+
+
+      <!-- =====================
+           TOP PLAYER
+      ====================== -->
+
+      <div
+        id="player2"
+        class="opponent opponent-top"
+      >
+
+        <div class="opponent-avatar">
+          P2
+        </div>
+
+        <div class="opponent-details">
+
+          <strong>
+            Player 2
+          </strong>
+
+          <small>
+            13 lá
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================
+           LEFT PLAYER
+      ====================== -->
+
+      <div
+        id="player3"
+        class="opponent opponent-left"
+      >
+
+        <div class="opponent-avatar">
+          P3
+        </div>
+
+        <div class="opponent-details">
+
+          <strong>
+            Player 3
+          </strong>
+
+          <small>
+            13 lá
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================
+           RIGHT PLAYER
+      ====================== -->
+
+      <div
+        id="player4"
+        class="opponent opponent-right"
+      >
+
+        <div class="opponent-avatar">
+          P4
+        </div>
+
+        <div class="opponent-details">
+
+          <strong>
+            Player 4
+          </strong>
+
+          <small>
+            13 lá
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================
+           CENTER
+      ====================== -->
+
+      <div class="center-table">
+
+        <div
+          id="turnText"
+          class="turn-text"
+        >
+          Đang chuẩn bị...
+        </div>
+
+
+        <div
+          id="playedBy"
+          class="played-by"
+        ></div>
+
+
+        <div
+          id="playedCards"
+          class="played-cards"
+        ></div>
+
+
+        <div
+          id="message"
+          class="game-message"
+        ></div>
+
+      </div>
+
+
+      <!-- =====================
+           CURRENT PLAYER
+      ====================== -->
+
+      <div class="my-player">
+
+        <div class="my-player-header">
+
+          <div class="my-player-info">
+
+            <div class="my-avatar">
+              <span id="myInitial">
+                M
+              </span>
+            </div>
 
             <div>
-              <strong id="gamePlayerName">Player</strong>
-              <small id="myCardCount">13 lá</small>
+
+              <strong id="gamePlayerName">
+                Player
+              </strong>
+
+              <small id="myCardCount">
+                13 lá
+              </small>
+
             </div>
+
           </div>
 
-          <div id="myHand" class="hand"></div>
 
-          <div class="actions">
-            <button id="passBtn" class="secondary-btn">
-              BỎ LƯỢT
-            </button>
-
-            <button id="playBtn" class="primary-btn">
-              ĐÁNH
-            </button>
+          <div
+            id="myTurnBadge"
+            class="turn-badge"
+          >
+            LƯỢT CỦA BẠN
           </div>
 
         </div>
 
-      </main>
-    </section>
+
+        <div
+          id="myHand"
+          class="hand"
+        ></div>
+
+
+        <div class="game-actions">
+
+          <button
+            id="passBtn"
+            class="btn btn-secondary"
+          >
+            BỎ LƯỢT
+          </button>
+
+          <button
+            id="playBtn"
+            class="btn btn-primary"
+          >
+            ĐÁNH
+          </button>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </section>
+
+
+  <!-- =========================
+       RESULT MODAL
+  ========================== -->
+
+  <div
+    id="resultModal"
+    class="modal-overlay"
+  >
+
+    <div class="result-modal">
+
+      <div class="result-icon">
+        ♛
+      </div>
+
+      <div
+        id="resultTitle"
+        class="result-title"
+      >
+        Bạn thắng!
+      </div>
+
+      <div
+        id="resultText"
+        class="result-text"
+      >
+        Ván đấu đã kết thúc.
+      </div>
+
+      <div class="result-actions">
+
+        <button
+          id="newGameBtn"
+          class="btn btn-primary"
+        >
+          CHƠI VÁN MỚI
+        </button>
+
+        <button
+          id="resultHomeBtn"
+          class="btn btn-secondary"
+        >
+          VỀ TRANG CHỦ
+        </button>
+
+      </div>
+
+    </div>
 
   </div>
 
-  <script src="./script.js"></script>
+</div>
+
+
+<script src="./script.js"></script>
+
 </body>
 </html>
